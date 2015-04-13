@@ -1,0 +1,7 @@
+<%= bootstrap_form_for list do |f| %>
+  <%= f.text_field :title %>
+  <%= render partial: 'recommendations/fields_for',
+             collection: f.object.recommendations,
+             locals: { f: f }%>
+  <%= f.submit %>
+<%- end %>

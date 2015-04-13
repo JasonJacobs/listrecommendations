@@ -1,0 +1,29 @@
+class ListsController < ApplicationController
+  before_action :authenticate_user!
+
+  def new
+    new_list
+  end
+
+  def create
+    if new_list(list_params).save
+      redirect_to new_list
+    else
+      render :new
+    end
+  end
+
+private
+
+  def new_list(attrs={})
+    @list ||= current_user.lists.build(attrs)
+    @list.recommendations.build unless @list.recommendations.any?
+    @list
+  end
+
+  def list_params
+    params.require(:list).permit(:title,
+      recommendations_attributes: [ :comment, :rating ]
+    )
+  end
+end
