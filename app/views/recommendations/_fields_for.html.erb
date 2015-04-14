@@ -1,6 +1,4 @@
-<div class="recommendation-form">
-  <%= f.fields_for :recommendations do |rf| %>
-    <%= rf.text_area :comment %>
-    <%= rf.number_field :rating %>
-  <%- end %>
-</div>
+	<%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
+		  <%= rf.text_area :comment %>
+		  <%= rf.number_field :rating %>
+	<%- end %>

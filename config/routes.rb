@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   end
 
   root to: "static_pages#welcome"
+  get "add_recommendation_form" => "lists#add_recommendation_form"
+
 end
