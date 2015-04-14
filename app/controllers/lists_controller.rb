@@ -20,8 +20,6 @@ class ListsController < ApplicationController
 
   def add_recommendation_form
     @f = params["f"]
-    @list = params["list"]
-    byebug
     respond_to do |format|
       format.js { }
     end

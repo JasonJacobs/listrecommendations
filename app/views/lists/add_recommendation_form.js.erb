@@ -1,1 +1,1 @@
-$( ".recommendation-form" ).append( "<%= j render(:partial => 'recommendations/fields_for' ) %>" );
+$( ".recommendation-form" ).append( "<%= j render(:partial => 'recommendations/fields_for', locals: {:f => @f} ) %>" );

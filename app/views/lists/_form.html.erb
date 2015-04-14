@@ -1,9 +1,11 @@
-<%= bootstrap_form_for list do |f| %>
+<% list_for_link=list %>
+<%= form_for list do |f| %>
   <%= f.text_field :title %>
   <div class="recommendation-form">
 	<%= render partial: "recommendations/fields_for",
 			locals: { f: f, list: list } %>
-	</div>		
-  <%= link_to "+", add_recommendation_form_path(f: f, list: list), remote: true %>
+	</div>	
+  <%= link_to "+", add_recommendation_form_path(:f => f, :list_id =>f.object.id), remote: true %>
   <%= f.submit %>
 <%- end %>
+
