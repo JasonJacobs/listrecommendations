@@ -1,9 +1,14 @@
 <%= bootstrap_form_for list do |f| %>
   <%= f.text_field :title %>
   <div id="new_recommendations"></div>
-  <%#= render partial: 'recommendations/fields_for',
-             collection: f.object.recommendations,
-             locals: { f: f }%>
+  <%= render partial: 'recommendations/fields_for',
+			locals: { f: f }%>
   <a href="#" id="add_recommendation_form">+</a>           
   <%= f.submit %>
 <%- end %>
+
+
+<!-- 
+
+             #collection: f.object.recommendations,
+             #locals: { f: f }%> -->
