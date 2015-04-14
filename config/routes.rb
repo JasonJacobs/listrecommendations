@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   devise_for :users
 
+  resources :users, only: %i[index show]
   resources :lists, only: %i[index new create]
   resources :recommendations, only: %i[show]
   resources :recommendations, only: %i[new],

@@ -11,7 +11,8 @@ class ListsController < ApplicationController
 
   def create
     if new_list(list_params).save
-      redirect_to user_path
+      user_id = current_user.id
+      redirect_to user_path(user_id)
     else
       render :new
     end

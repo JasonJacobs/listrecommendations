@@ -52,9 +52,9 @@
 
         <ul class="nav navbar-nav navbar-right">
           <div class="nav-group">
-          <%= link_to "link1", "/path2"  %>
-          <%= link_to "Link2", "/path2"  %>
-          <%= link_to "Link3", "/path3"  %>
+          <%= link_to "Profile", user_path(current_user.id) %>
+          <%= link_to "Create lists", new_list_path  %>
+          <%= link_to "Explore", users_path %>
           </ul>
           <% if user_signed_in? %>
           <button type="button" class="btn btn-default navbar-btn"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
