@@ -51,14 +51,16 @@
     </div>
 
         <ul class="nav navbar-nav navbar-right">
-          <div class="nav-group">
-          <%= link_to "Profile", user_path(current_user.id) %>
+          <div class="nav-group">  
           <%= link_to "Create lists", new_list_path  %>
           <%= link_to "Explore", users_path %>
           </ul>
           <% if user_signed_in? %>
           <button type="button" class="btn btn-default navbar-btn"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
           </button>
+          <div class="nav-group">
+          <%= link_to "Profile", user_path(current_user.id) %>
+          </div>
 
           <% else %>
           <button type="button" class="btn btn-default navbar-btn"><%= link_to('Login', new_user_session_path) %>
