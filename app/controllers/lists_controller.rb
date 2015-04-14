@@ -25,8 +25,6 @@ private
 
   def new_list(attrs={})
     @list ||= current_user.lists.build(attrs)
-    @list.recommendations.build unless @list.recommendations.any?
-    @list
   end
 
   def list_params

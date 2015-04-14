@@ -1,5 +1,7 @@
 class RecommendationsController < ApplicationController
   before_action :authenticate_user!
+  respond_to :html
+  respond_to :js, only: %i[new]
 
   def index
     recommendations
@@ -10,7 +12,14 @@ class RecommendationsController < ApplicationController
   end
 
   def new
-    new_recommendation
+    respond_to do |format|
+      format.html { new_recommendation }
+      format.js do 
+        #when we pick up again, we need to select the mobile app before completing the action below
+        render_to_string partial: "recommendations/recommendation", 
+                         object: Recommendation.new
+      end
+    end
   end
 
   def create

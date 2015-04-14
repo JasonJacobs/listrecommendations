@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :lists, only: %i[index new create]
   resources :recommendations, only: %i[show]
+  resources :recommendations, only: %i[new],
+  							  constraints: { format: :js } 
 
   resources :mobile_apps, only: %i[index] do
     resources :recommendations, only: %i[index new create]
