@@ -1,5 +1,9 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
+  
+  def index
+    lists
+  end
 
   def new
     new_list
@@ -14,6 +18,10 @@ class ListsController < ApplicationController
   end
 
 private
+
+  def lists
+    @lists ||= List.all
+  end
 
   def new_list(attrs={})
     @list ||= current_user.lists.build(attrs)
