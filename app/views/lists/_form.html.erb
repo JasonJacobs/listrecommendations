@@ -1,9 +1,17 @@
 <%= bootstrap_form_for list do |f| %>
   <%= f.text_field :title %>
   <div class="recommendation-form">
-	<%= render partial: "recommendations/fields_for",
-			locals: { f: f, list: list } %>
+  <% 10.times do |n| %>
+  	<div id="<%= n %>">
+			<%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
+				  <%= rf.text_area :comment %>
+				  <%= rf.number_field :rating %>
+				  <%= rf.collection_select :mobile_app_id,MobileApp.order(:name), :id, :name %>
+			<%- end %>
+		</div>
+  <% end %>
 	</div>		
-  <%= link_to "+", add_recommendation_form_path(f: f, list: list), remote: true %>
+  <a href="#" id="add_recommendation_form">+</a>
   <%= f.submit %>
 <%- end %>
+
