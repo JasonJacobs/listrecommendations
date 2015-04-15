@@ -1,12 +1,21 @@
 class ListsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   
   def index
     lists
   end
 
+  def show
+    @user = current_user
+    list
+  end
+
   def new
     new_list
+  end
+
+  def edit
+    new_list.save
   end
 
   def create
@@ -18,10 +27,25 @@ class ListsController < ApplicationController
     end
   end
 
+  def upvote
+    list.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    list.downvote_from current_user
+    redirect_to :back
+  end
+
+
 private
 
   def lists
     @lists ||= List.all
+  end
+
+  def list
+    @list ||= List.find(params[:id])
   end
 
   def new_list(attrs={})

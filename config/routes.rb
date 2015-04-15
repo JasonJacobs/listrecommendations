@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: %i[index show]
-  resources :lists, only: %i[index new create]
+  resources :lists, only: %i[index new create show edit] do
+    member do
+      put "like", to: "lists#upvote"
+      put "unlike", to: "lists#downvote"
+    end
+  end
+
   resources :recommendations, only: %i[show]
   resources :recommendations, only: %i[new],
   							  constraints: { format: :js } 
