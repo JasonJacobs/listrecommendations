@@ -15,8 +15,7 @@ class RecommendationsController < ApplicationController
     respond_to do |format|
       format.html { new_recommendation }
       format.js do 
-        #when we pick up again, we need to select the mobile app before completing the action below
-        render_to_string partial: "recommendations/recommendation", 
+        render_to_string partial: "recommendations/fields_for", 
                          object: Recommendation.new
       end
     end
