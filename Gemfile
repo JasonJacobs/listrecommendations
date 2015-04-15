@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 gem "less-rails"
 gem 'bootstrap_form'
+gem 'pdf-reader'
 
 gem 'devise'
 gem 'rake', '10.4.2'

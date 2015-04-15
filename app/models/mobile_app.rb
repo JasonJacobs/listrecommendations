@@ -3,6 +3,6 @@ class MobileApp < ActiveRecord::Base
   has_many :recommendations
 
   validates :name, presence: true
-  validates :description, presence: true
+  # validates :description, presence: true
 
 end
