@@ -4,7 +4,7 @@
   <% 10.times do |n| %>
   	<div id="<%= n %>">
 			<%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
-          <%= rf.collection_select :mobile_app_id,MobileApp.order(:name), :id, :name %>
+          <%= rf.collection_select :mobile_app_id, MobileApp.order(:name).limit(10), :id, :name, :include_blank => true %>
 				  <%= rf.text_area :comment %>
 				  <%= rf.number_field :rating %>
 			<%- end %>

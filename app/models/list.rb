@@ -3,6 +3,5 @@ class List < ActiveRecord::Base
   belongs_to :user
   has_many :recommendations
 
-  accepts_nested_attributes_for :recommendations #, :reject_if => lambda { |a| a[:name].blank? } 
-
+  accepts_nested_attributes_for :recommendations, reject_if: :all_blank
 end

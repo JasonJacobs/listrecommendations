@@ -11,7 +11,7 @@ class ListsController < ApplicationController
   end
 
   def new
-    new_list
+    @list = current_user.lists.new
   end
 
   def edit
@@ -19,7 +19,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    binding.pry
+    @list = List.new(list_params)
     if new_list(list_params).save
       user_id = current_user.id
       redirect_to user_path(user_id)
@@ -49,15 +49,8 @@ private
     @list ||= List.find(params[:id])
   end
 
-  def new_list(attrs={})
-    @list ||= current_user.lists.build(attrs)
-    @list.recommendations.build(attrs.merge(user_id: current_user.id))
-  end
-
   def list_params
-    params.require(:list).permit(:title,
-      recommendations_attributes: [ :mobile_app_id, :comment, :rating, :user_id ]
-    )
+    params.require(:list).permit(:title, recommendations_attributes: [ :mobile_app_id, :comment, :rating, :user_id ])
   end
 
 end

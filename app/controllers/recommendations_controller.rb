@@ -22,7 +22,6 @@ class RecommendationsController < ApplicationController
   end
 
   def create
-    binding.pry
     if new_recommendation(recommendation_params).save
       redirect_to new_recommendation
     else
