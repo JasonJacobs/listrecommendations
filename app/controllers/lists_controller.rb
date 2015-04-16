@@ -22,6 +22,11 @@ class ListsController < ApplicationController
     if new_list(list_params).save
       user_id = current_user.id
       redirect_to user_path(user_id)
+      recommendation_ids = params["list"]["recommendations_attributes"]
+      recommendation_ids.each do |recommendation, recommendation_values|
+        recommendation_values.each do |recommendation_key, recommendation_value|
+        end
+      end
     else
       render :new
     end
@@ -57,4 +62,25 @@ private
       recommendations_attributes: [ :comment, :rating ]
     )
   end
+end
+
+
+
+
+
+def update
+    if params["student"]["student_subjects_attributes"]
+      subject_ids = params["student"]["student_subjects_attributes"]["0"]["subject_id"]
+      subject_ids.each do |subject_id|
+        StudentSubject.create(:subject_id => subject_id, :student_id => current_student.id)
+      end
+    end
+    redirect_to student_path(current_student)
+  end 
+
+  private
+    def student_params
+      params.require(:student).permit(:name, :email, :uid, :provider, :secret, :oauth_token, :student_subjects_attributes => [:subject_id => []])
+    end
+
 end
