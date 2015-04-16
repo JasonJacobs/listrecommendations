@@ -1,1 +1,26 @@
-<h1>home</h1>
+<div id="background">
+  <header class="cf">
+    <div class="wrapper_wide">
+      <a href="#" id="logo">AppMazing</a>
+      <nav>
+        <ul>
+        
+          <li><%= link_to "Explore", users_path %></li>
+          <li><%= link_to "Create lists", new_list_path  %></li>
+          <% if user_signed_in? %>
+          <li>%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          <li><%= link_to "Profile", user_path(current_user.id) %></li>
+        </ul>
+        <% else %>
+        <li><%= link_to('Login', new_user_session_path) %></li>
+      </nav>
+         <% end %>
+         <%= yield %>
+    </div>
+  </header>
+  <div class="wrapper_skinny">
+    <h1>Discover your new favorite<br> apps, or create recommendation list of your own.</h1>
+    <%= link_to 'Login', new_user_session_path, class: "button button_highlight" %>
+    <%= link_to "Explore", users_path, class: "button button_white" %>
+  </div>
+</div>

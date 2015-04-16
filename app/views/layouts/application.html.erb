@@ -1,92 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Appreco" %></title>
-    <%= csrf_meta_tags %>
+<html>
+<head>
+  <title>AppMazing</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
-    <![endif]-->
+<% if alert %>
+  <div id="notice_wrapper">
+    <p class="alert"><%= alert %></p>
+  </div>
+<% elsif notice %>
+  <div id="notice_wrapper">
+    <p class="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-    <%#= stylesheet_link_tag "application", :media => "all" %>
+<% unless current_page?(root_path) %>
+  <%= render 'layouts/header'; %>
+<% end %>
 
-    <!-- For third-generation iPad with high-resolution Retina display: -->
-    <!-- Size should be 144 x 144 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+<%= yield %>
 
-    <!-- For iPhone with high-resolution Retina display: -->
-    <!-- Size should be 114 x 114 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+<script>
+  $(document).ready(function(){
+    setTimeout(function() {
+      $('#notice_wrapper').fadeOut("slow", function() {
+        $this.remove();
+      });
+    }, 4500 );
+  });
+</script>
 
-    <!-- For first- and second-generation iPad: -->
-    <!-- Size should be 72 x 72 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
-
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <!-- Size should be 57 x 57 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
-
-    <!-- For all other devices -->
-    <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
-    <%= javascript_include_tag "application" %>
-  </head>
-  <body>
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <a class="navbar-brand" href="<%= root_path %>">App Reco</a>
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-    </div>
-
-        <ul class="nav navbar-nav navbar-right">
-          <div class="nav-group">  
-          <%= link_to "Create lists", new_list_path  %>
-          <%= link_to "Explore", users_path %>
-          </ul>
-          <% if user_signed_in? %>
-          <button type="button" class="btn btn-default navbar-btn"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-          </button>
-          <ul class="nav navbar-nav navbar-right">
-          <%= link_to "Profile", user_path(current_user.id) %>
-          </ul>
-          <% else %>
-          <button type="button" class="btn btn-default navbar-btn"><%= link_to('Login', new_user_session_path) %>
-          </button> 
-            
-          </div>
-          </nav>
-
-     
-        <% end %>
-        </div>
-    <div class="jumbotron">
-    <div class="container">
-    <div class="col-lg-9">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-      </div><!--/row-->
-      </div>
-
-      <nav class="navbar navbar-default navbar-fixed-bottom">
-      <div class="container-fluid">
-        <p>&copy; Company 2015</p>
-        </div>
-      </nav>
-
-    </div> <!-- /container -->
-
-  </body>
+</body>
 </html>
