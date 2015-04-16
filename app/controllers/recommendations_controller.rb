@@ -40,7 +40,7 @@ private
   end
 
   def new_recommendation(attrs={})
-    @recommendation ||= mobile_app.recommendations.build(attrs.merge(user: current_user))
+    @recommendation ||= mobile_app.recommendations.build(attrs.merge(user_id: current_user))
   end
 
   def mobile_app
@@ -48,7 +48,7 @@ private
   end
 
   def recommendation_params
-    params.require(:recommendation).permit(:mobile_app_id, :comment, :rating, :tag_names)
+    params.require(:recommendation).permit(:mobile_app_id, :comment, :rating, :tag_names, :user_id)
   end
 
 end
