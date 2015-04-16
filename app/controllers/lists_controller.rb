@@ -8,6 +8,7 @@ class ListsController < ApplicationController
   def show
     @user = current_user
     list
+    binding.pry
   end
 
   def new
