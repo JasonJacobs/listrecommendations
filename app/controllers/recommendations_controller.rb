@@ -22,6 +22,7 @@ class RecommendationsController < ApplicationController
   end
 
   def create
+    binding.pry
     if new_recommendation(recommendation_params).save
       redirect_to new_recommendation
     else
@@ -40,7 +41,7 @@ private
   end
 
   def new_recommendation(attrs={})
-    @recommendation ||= mobile_app.recommendations.build(attrs.merge(user_id: current_user))
+    @recommendation ||= mobile_app.recommendations.build(attrs.merge(user_id: current_user.id))
   end
 
   def mobile_app
