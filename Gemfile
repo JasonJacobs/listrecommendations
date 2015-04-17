@@ -16,6 +16,8 @@ gem 'therubyracer', platforms: :ruby
 gem "less-rails"
 gem 'bootstrap_form'
 gem 'pdf-reader'
+gem 'link_thumbnailer'
+
 
 gem 'devise'
 gem 'rake', '10.4.2'
