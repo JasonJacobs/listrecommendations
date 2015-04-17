@@ -9,5 +9,4 @@ $( document ).ready(function() {
 			counter++
 			$('#'+counter).show();
 	});
-	
 });

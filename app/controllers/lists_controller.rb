@@ -13,6 +13,8 @@ class ListsController < ApplicationController
 
   def new
     @list = current_user.lists.new
+    # BUILDS LIST user_id
+    # new_list
   end
 
   def edit
@@ -20,8 +22,13 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
-    if new_list(list_params).save
+    # @list = List.new(list_params)
+    new_list(list_params).each do |app|
+      app.save
+    end
+    binding.pry
+    @list.save
+    if @list.save #new_list(list_params).save
       user_id = current_user.id
       redirect_to user_path(user_id)
     else
@@ -53,6 +60,14 @@ private
   def list_params
     params.require(:list).permit(:title, recommendations_attributes: [ :mobile_app_id, :comment, :rating, :user_id ])
   end
+
+  def new_list(attrs={})        
+    @list ||= current_user.lists.build(attrs)
+    # BUILDS RECOMMENDATION user_id
+    @list.recommendations.build(attrs["recommendations_attributes"].values).each do |recommendation|
+      recommendation["user_id"] = current_user.id
+    end    
+  end 
 
 end
 
