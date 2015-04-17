@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true
 
+  acts_as_voter
 end

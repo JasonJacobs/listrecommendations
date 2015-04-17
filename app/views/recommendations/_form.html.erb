@@ -1,6 +1,20 @@
-<%= bootstrap_form_for [recommendation.mobile_app, recommendation] do |f| %>
-  <p><%= f.text_field :comment %></p>
-  <p><%= f.number_field :rating %></p>
-  <p><%= f.text_field :tag_names %></p>
-  <p><%= f.submit %></p>
-<%- end %>
+<%= form_for [recommendation.mobile_app, recommendation] do |f| %>
+	<div class="field">
+	<%= f.label :comment %><br>
+	<%= f.text_field :comment %>
+  	</div>
+	
+	<div class="field">
+	<%= f.label :rating %><br>
+	<%= f.number_field :rating %>
+	</div>
+  
+
+
+<div class="field">
+<%= f.label :tag_names %><br>
+<%= f.text_field :tag_names %>	
+</div>
+
+<%= f.submit class: "button button_highlight button_block" %>
+<% end %>

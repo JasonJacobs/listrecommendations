@@ -40,7 +40,7 @@ private
   end
 
   def new_recommendation(attrs={})
-    @recommendation ||= mobile_app.recommendations.build(attrs.merge(user_id: current_user))
+    @recommendation ||= mobile_app.recommendations.build(attrs.merge(user_id: current_user.id))
   end
 
   def mobile_app

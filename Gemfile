@@ -13,7 +13,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
-gem "less-rails"
 gem 'bootstrap_form'
 gem 'pdf-reader'
 gem "skylight"
@@ -31,7 +30,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 
-gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 
 # Use ActiveModel has_secure_password

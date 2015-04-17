@@ -74,6 +74,8 @@ body {
 	}
 }
 
+ 
+
 .button_block {
 	display: block;
 	margin: 0 auto;
@@ -120,6 +122,10 @@ body {
 		letter-spacing: 1px;
 		margin: 0;
 		padding: 8rem 0;
+
+	.black {
+		color: black;
+	}
 	}
 }
 
@@ -199,6 +205,6 @@ textarea {
 	padding: 0 0 5rem 0;
 }
 
-//@import 'normalize';
+@import 'normalize';
 @import 'welcome';
-//@import 'recomendations';
+@import 'recommendations';
