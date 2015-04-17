@@ -1,3 +1,24 @@
+<div id="podcast_show">
+  <div id="show_banner">
+    <div class="wrapper_skinny">
+      <h1>Profile</h1>
+    </div>
+  </div>
+
+  <div id="links">
+    <div class="wrapper_skinny">
+      <ul>
+        <li><%= link_to "My Lists", user_path(current_user.id) %></li>
+        <li><%= link_to "New List", new_list_path %></li>
+        <li><%= link_to "Account Settings", edit_user_registration_path, class: "current" %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div id="form">
+  <div class="wrapper_skinny">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -28,7 +49,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: "button button_highlight button_block" %>
   </div>
 <% end %>
 
@@ -37,3 +58,5 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>
+</div>

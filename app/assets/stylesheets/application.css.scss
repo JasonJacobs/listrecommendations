@@ -129,8 +129,8 @@ body {
 	}
 }
 
-.podcasts_banner {
-	background-image: image-url("podcasts_banner.jpg");
+.list_banner {
+	background-image: image-url("list_banner.jpg");
 }
 
 .sign_in_banner {
@@ -203,6 +203,10 @@ textarea {
 
 #form {
 	padding: 0 0 5rem 0;
+}
+
+#drop {
+width: 50%;
 }
 
 @import 'normalize';

@@ -1,4 +1,10 @@
+<div id="form">
+  <div class="wrapper_skinny">
+  	<div class="field">
 	<%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
+		  <%= rf.label :comment %><br>
 		  <%= rf.text_area :comment %>
-		  <%= rf.number_field :rating %>
-	<%- end %>
+	</div>
+	</div>
+
+	<% end %>

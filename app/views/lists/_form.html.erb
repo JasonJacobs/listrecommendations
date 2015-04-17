@@ -1,17 +1,36 @@
-<%= form_for list do |f| %>
+<div id="banner" class="list_banner">
+  <h1>Create Your List</h1>
+</div>
+
+<div id="form">
+  <div class="wrapper_skinny">
+  <%= form_for list do |f| %>
+
+  <div class="field">
+  <%= f.label :title %><br>
   <%= f.text_field :title %>
-  <div class="recommendation-form">
+  </div>
+  </div>
+
+<div id="form">
+  <div class="wrapper_skinny">
   <% 10.times do |n| %>
   	<div id="<%= n %>">
 			<%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
-          <%= rf.collection_select :mobile_app_id, MobileApp.order(:name).limit(10), :id, :name, :include_blank => true %>
+        <div class="drop">
+         <%= rf.label :mobile_app_id %>
+          <%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => true %>
+        </div>
+
+        <div class="field">
+          <%= rf.label :comment %>
 				  <%= rf.text_area :comment %>
-				  <%= rf.number_field :rating %>
           <%= rf.hidden_field :user_id, value: current_user.id %>
-			<%- end %>
+        </div>
+			<% end %>
 		</div>
   <% end %>
 	</div>		
   <a href="#" id="add_recommendation_form">+</a>
-  <%= f.submit %>
+  <%= f.submit class: "button button_highlight button_block"%>
 <%- end %>
