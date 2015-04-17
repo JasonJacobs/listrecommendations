@@ -22,12 +22,12 @@ class ListsController < ApplicationController
   end
 
   def create
-    # @list = List.new(list_params)
-    new_list(list_params).each do |app|
-      app.save
-    end
-    binding.pry
-    @list.save
+    @list = List.new(list_params)
+    @list.user_id = current_user.id
+    # new_list(list_params).each do |app|
+    #   app.save
+    # end
+    #binding.pry
     if @list.save #new_list(list_params).save
       user_id = current_user.id
       redirect_to user_path(user_id)
