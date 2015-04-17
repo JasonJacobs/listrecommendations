@@ -1,3 +1,9 @@
 <% @user.lists.each do |list| %>
 <%= list.title %>
+<%= list.recommendations.each do |recommendation| %>
+    <% object = LinkThumbnailer.generate(recommendation.mobile_app.url) %>
+    <%= object.title %>
+    <%= object.description %>
+    <img src="<%= object.images.first.src.to_s %>", width="110" , height="110"> </img>
+    <% end %>
 <% end %>

@@ -8,7 +8,6 @@ class ListsController < ApplicationController
   def show
     @user = current_user
     list
-    binding.pry
   end
 
   def new
@@ -22,7 +21,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.user_id = current_user.id
-    if @list.save 
+    if @list.save #new_list(list_params).save
       user_id = current_user.id
       redirect_to user_path(user_id)
     else
