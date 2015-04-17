@@ -3,5 +3,7 @@ class List < ActiveRecord::Base
   belongs_to :user
   has_many :recommendations
 
-  accepts_nested_attributes_for :recommendations, reject_if: :all_blank
+
+  accepts_nested_attributes_for :recommendations, reject_if: proc { |attributes| attributes['mobile_app_id'].blank? }
+
 end

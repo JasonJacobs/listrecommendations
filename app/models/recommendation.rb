@@ -3,7 +3,8 @@ class Recommendation < ActiveRecord::Base
 
   belongs_to :mobile_app
   belongs_to :list
+  belongs_to :user
 
-  validates :mobile_app, presence: true
+  #validates :mobile_app, presence: true
 
 end

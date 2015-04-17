@@ -7,6 +7,7 @@
           <%= rf.collection_select :mobile_app_id, MobileApp.order(:name).limit(10), :id, :name, :include_blank => true %>
 				  <%= rf.text_area :comment %>
 				  <%= rf.number_field :rating %>
+          <%= rf.hidden_field :user_id, value: current_user.id %>
 			<%- end %>
 		</div>
   <% end %>
@@ -14,4 +15,3 @@
   <a href="#" id="add_recommendation_form">+</a>
   <%= f.submit %>
 <%- end %>
-
