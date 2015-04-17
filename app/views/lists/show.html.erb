@@ -1,15 +1,20 @@
-SHOW
+<% @list.recommendations.each do |recommendation| %>
+    <% object = LinkThumbnailer.generate(recommendation.mobile_app.url) %>
+    <%= object.title %>
+    <%= object.description %>
+    <img src="<%= object.images.first.src.to_s %>", width="110" , height="110"> </img>
+<% end %>
 
-<div class="btn-group pull-right">
-  <%= link_to like_list_path(@list), :method => "put", class: "btn btn-default" do  %>
+<!-- <div class="btn-group pull-right">
+  <%#= link_to like_list_path(@list), :method => "put", class: "btn btn-default" do  %>
     <span class="glyphicon glyphicon-heart"></span>
-    <%= @list.get_upvotes.size %>
-  <% end %>
-  <% if user_signed_in? %>
-    <%= link_to "Edit", edit_list_path, class: "btn btn-default" %>
-    <%= link_to "Delete", list_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
-  <% end %>
-</div>
+    <%#= @list.get_upvotes.size %>
+  <%# end %>
+  <%# if user_signed_in? %>
+    <%#= link_to "Edit", edit_list_path, class: "btn btn-default" %>
+    <%#= link_to "Delete", list_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
+  <%# end %>
+</div> -->
 
 <%#= link_to post_downvote_path(post), :remote => true, :method => "put" %>
 
