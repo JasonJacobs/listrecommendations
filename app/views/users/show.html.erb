@@ -1,11 +1,9 @@
-
 <div id="podcast_show">
   <div id="show_banner">
     <div class="wrapper_skinny">
       <h1>List Dashboard</h1>
-      </div> <!-- for <div class="wrapper_skinny"> -->
-    </div><!-- for <div id="show_banner"> -->
-</div><!-- for <div id="podcast_show"> -->
+    </div> <!-- for <div class="wrapper_skinny"> -->
+  </div><!-- for <div id="show_banner"> -->
 
 <div id="links">
   <div class="wrapper_skinny">
@@ -14,18 +12,21 @@
       <li><%= link_to "New List", new_list_path %></li>
       <li><%= link_to "Account Settings", edit_user_registration_path %></li>
     </ul>
-  </div><!-- for <div class="wrapper_skinny"> -->
-</div><!-- for <div id="links"> -->
+  </div><!-- for div class="wrapper_skinny"> -->
+</div><!-- for div id="links"> -->
 
 <div id="episodes">
   <div class="wrapper_skinny">
-    <div class="episode_thumbnail">
-      <a href="episode.html"><% @user.lists.each do |list| %></a>
+      <ul class="cf">
+      <li class="cf">
+  <div class="episode_thumbnail">
+    <a href="episode.html">
+      <% @user.lists.each do |list| %>
       <%= link_to list.title, list_path %>
       <% end %>
-    </div><!-- for <div class="episode_thumbnail"> -->
-  </div><!-- for <div class="wrapper_skinny">    --> 
- </div><!-- for <div id="episodes">  -->     
+    </a>
+</div><!-- for <div id="podcast_show"> -->
+    
 
        
 
