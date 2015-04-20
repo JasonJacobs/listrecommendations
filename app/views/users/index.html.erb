@@ -6,7 +6,7 @@
 	<div class="wrapper">
 		<ul class="cf">
 	<% @users.each do |user| %>
-	<%= link_to user.email, user_path(user) %>		
+	<%= link_to user.name, user_path(user) %>		
 	</ul>
 	<% end %>
 </div>

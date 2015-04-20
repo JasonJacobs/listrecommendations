@@ -3,42 +3,46 @@
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
-  </div>
+  </div><!-- for<div class="field"> -->
 
   <div id="field">
-  <div class="wrapper_skinny" >
+  <div class="wrapper_skinny">
     <div id="<%= 0 %>">
       <%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
         <div class="actions">
          <%= rf.label :mobile_app_id %><br>
           <%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => "Please Select an App" %>
-        </div>
+        </div><!-- for <div class="actions"> -->
 
         <div class="field">
           <%= rf.label :comment %>
           <%= rf.text_field :comment %>
           <%= rf.hidden_field :user_id, value: current_user.id %>
-        </div>
+        </div><!-- for <div class="field"> -->
       <% end %>
-      </div>
+    </div><!-- for <div id="<%#= 0 %>"> -->
     <% 9.times do |n| %>
   	 <div class="show_rec_form" id="<%= n %>" style='display:none;'>
 			<%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
         <div class="actions">
          <%= rf.label :mobile_app_id %><br>
           <%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => "Please Select an App" %>
-        </div>
+        </div><!-- for <div class="actions"> -->
 
         <div class="field">
           <%= rf.label :comment %>
 				  <%= rf.text_field :comment %>
           <%= rf.hidden_field :user_id, value: current_user.id %>
-        </div>
+        </div><!-- for <div class="field"> -->
 			<% end %>
-		  </div>
+		  </div><!-- for div class="show_rec_form" -->
     <% end %>
-	</div>		
-  <a id="add_recommendation_form">+</a>
+	</div> 	<!-- for <div class="wrapper_skinny" > -->
+
+  <div class="btn-group"> 
+    <button type="button", class:"button button_highlight button_block" id="add_recommendation_form">+</button>
+  </div> <!-- for <div class="btn-group">  -->
+
   <%= f.submit class: "button button_highlight button_block"%>
-  </div>
+  </div> <!-- for <div id="field">  -->
 <% end %>
