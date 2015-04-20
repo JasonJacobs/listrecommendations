@@ -1,9 +1,53 @@
-<% @user.lists.each do |list| %>
-<%= list.title %>
-<%= list.recommendations.each do |recommendation| %>
-    <% object = LinkThumbnailer.generate(recommendation.mobile_app.url) %>
-    <%= object.title %>
-    <%= object.description %>
-    <img src="<%= object.images.first.src.to_s %>", width="110" , height="110"> </img>
-    <% end %>
-<% end %>
+
+<div id="podcast_show">
+  <div id="show_banner">
+    <div class="wrapper_skinny">
+      <h1>List Dashboard</h1>
+    </div>
+  </div>
+
+
+  <div id="links">
+    <div class="wrapper_skinny">
+      <ul>
+      <li class="current">Lists</li>
+        <li><%= link_to "New List", new_list_path %></li>
+        <li><%= link_to "Account Settings", edit_user_registration_path %></li>
+      </ul>
+    </div>
+  </div>
+
+    <div id="episodes">
+    <div class="wrapper_skinny">
+      <ul class="cf">
+      <li class="cf">
+            <div class="episode_thumbnail">
+              <a href="episode.html">
+		<% @user.lists.each do |list| %>
+		</a>
+	</div>
+		
+	<div class="episode_overview">
+		<h2><%= link_to "#{list.title}", list_path %></h2>
+  		<% list.recommendations.each do |recommendation| %>
+  		</div>
+     
+     <div class="episode_thumbnail">
+        <a href="episode.html">
+      	<% object = LinkThumbnailer.generate(recommendation.mobile_app.url) %>
+      	 </a>
+     </div>
+            <div class="episode_overview">
+      	<h2><%= object.title %></h2>
+      	<p class="description"><%= object.description %></p>
+      	<img src="<%= object.images.first.src.to_s %>", width="110" , height="110"> </img>
+      	 <% end %>
+      	  <% end %>
+
+      	
+          </li>
+      </ul>
+  </div>
+</div>
+       
+

@@ -1,4 +1,12 @@
-<% @users.each do |user| %>
-<%= link_to user.email, user_path(user) %>
-<% end %>
+<div id="banner" class="podcasts_banner">
+	<h1>Discover your new favorite apps</h1>
+</div>
 
+<div id="podcasts" class="cf">
+	<div class="wrapper">
+		<ul class="cf">
+	<% @users.each do |user| %>
+	<%= link_to user.email, user_path(user) %>		
+	</ul>
+	<% end %>
+</div>
