@@ -22,7 +22,7 @@
       <% end %>
       </div>
     <% 9.times do |n| %>
-  	 <div id="<%= n %>" style ='visibility: hidden; display:none;'>
+  	 <div class="show_rec_form" id="<%= n %>" style='display:none;'>
 			<%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
         <div class="actions">
          <%= rf.label :mobile_app_id %><br>
