@@ -22,7 +22,7 @@
   <div class="episode_thumbnail">
     <a href="episode.html">
       <% @user.lists.each do |list| %>
-      <%= link_to list.title, list_path %>
+      <%= link_to list.title, list_path %></br>
       <% end %>
     </a>
 </div><!-- for <div id="podcast_show"> -->
