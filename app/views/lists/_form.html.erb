@@ -1,16 +1,28 @@
-
-  <%= form_for list do |f| %>
-
+<%= form_for list do |f| %>
+  
   <div class="field">
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-  </div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
   </div>
 
-<div id="field">
-  <div class="wrapper_skinny">
-  <% 10.times do |n| %>
-  	<div id="<%= n %>">
+  <div id="field">
+  <div class="wrapper_skinny" >
+    <div id="<%= 0 %>">
+      <%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
+        <div class="actions">
+         <%= rf.label :mobile_app_id %><br>
+          <%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => "Please Select an App" %>
+        </div>
+
+        <div class="field">
+          <%= rf.label :comment %>
+          <%= rf.text_field :comment %>
+          <%= rf.hidden_field :user_id, value: current_user.id %>
+        </div>
+      <% end %>
+      </div>
+    <% 9.times do |n| %>
+  	 <div id="<%= n %>" style ='visibility: hidden; display:none;'>
 			<%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
         <div class="actions">
          <%= rf.label :mobile_app_id %><br>
@@ -23,9 +35,10 @@
           <%= rf.hidden_field :user_id, value: current_user.id %>
         </div>
 			<% end %>
-		</div>
-  <% end %>
+		  </div>
+    <% end %>
 	</div>		
-  <a href="user_path" id="add_recommendation_form">+</a>
+  <a id="add_recommendation_form">+</a>
   <%= f.submit class: "button button_highlight button_block"%>
+  </div>
 <% end %>
