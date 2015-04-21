@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 		user
 	end
 
+  def favorites
+    user
+  end
+
 private
 
   def users
@@ -16,6 +20,8 @@ private
 
   def user
     @user ||= User.find(params[:id])
-  end	
+  end
+
+
 
 end

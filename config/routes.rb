@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'users/:id/favorites', to: 'users#favorites', as: 'user_favorites'
+
   resources :recommendations, only: %i[show]
   resources :recommendations, only: %i[new],
   							  constraints: { format: :js } 
