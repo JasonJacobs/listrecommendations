@@ -1,19 +1,20 @@
 <div id="podcast_show">
   <div id="show_banner">
     <div class="wrapper_skinny">
-      <h1>Profile</h1>
+      <h1>Account Settings</h1>
     </div>
   </div>
 
-  <div id="links">
+<div id="links">
     <div class="wrapper_skinny">
       <ul>
-        <li><%= link_to "My Lists", user_path(current_user.id) %></li>
+        <li><%= link_to "My Lists", user_path(@user) %></li>
         <li><%= link_to "New List", new_list_path %></li>
-        <li><%= link_to "Account Settings", edit_user_registration_path, class: "current" %></li>
+        <li><%= link_to "My Favorites", user_favorites_path(@user) %></li>
+        <li class="current">Account Settings</li>
       </ul>
-    </div>
-  </div>
+    </div><!-- for div class="wrapper_skinny"> -->
+  </div><!-- for div id="links"> -->
 </div>
 
 
@@ -55,8 +56,7 @@
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
 </div>
 </div>
