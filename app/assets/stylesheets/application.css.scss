@@ -79,6 +79,11 @@ body {
 .button_block {
 	display: block;
 	margin: 0 auto;
+	display: block;
+  width: 100%;
+  text-align: center;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 #main_header {
@@ -199,11 +204,31 @@ input[type="email"], input[type="text"], input[type="password"], textarea {
 textarea {
 	min-height: 8rem;
 	margin-top: .5rem !important;
-}
+	width: 100%;
+  	min-height: 6em;
+  	padding: 1em;
+  	border: solid 1px black;
+  &:focus {
+    outline: none;
+  }
+ }		 
+
 
 #form {
 	padding: 0 0 5rem 0;
 }
+
+select {
+  width: 100%;
+  font-size: 1rem;
+  &.select--sm {
+    font-size: .5rem;
+  }
+  &.select--lg {
+    font-size: 1.5rem;
+  }
+
+ }		 
 
 
 
