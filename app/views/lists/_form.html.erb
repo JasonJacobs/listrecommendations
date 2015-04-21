@@ -15,7 +15,7 @@
 
       <%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
          <select name="appid" class="select--l">
-         <%= rf.label :mobile_app_id %><br>
+          <%= rf.label :mobile_app_id %><br>
           <%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => "Please Select an App" %>
           </select>
         </div><!-- for <div class="actions"> -->

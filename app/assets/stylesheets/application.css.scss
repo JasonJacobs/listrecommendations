@@ -79,8 +79,7 @@ body {
 .button_block {
 	margin: 0 auto;
 	display: block;
-  	width: 100%;
-  	text-align: center;
+  text-align: center;
   padding-right: 0;
   padding-left: 0;
 }
@@ -212,6 +211,7 @@ textarea {
   }
 }
 
+
 #form {
 	padding: 0 0 5rem 0;
 
@@ -228,6 +228,18 @@ select {
   }
 
 }
+
+select {
+  width: 100%;
+  font-size: 1rem;
+  &.select--sm {
+    font-size: .5rem;
+  }
+  &.select--lg {
+    font-size: 1.5rem;
+  }
+
+ }		 
 
 
 

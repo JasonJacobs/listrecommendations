@@ -3,7 +3,7 @@
 </div> 
 
 <div class="wrapper_skinny">
-  <% @user.lists.each do |list| %>
+  <% @lists.each do |list| %>
     <% if @user.voted_as_when_voted_for list %>
       <%= link_to list.title, list_path(list) %>
       <%= list.description %></br>
