@@ -1,17 +1,15 @@
 <div id="podcast_show" >
-  <div id="show_banner">
-    <div class="wrapper_skinny">
-        <h1><%= @user.name %>'s Profile</h1>
-    </div> <!-- for <div class="wrapper_skinny"> -->
-  </div><!-- for <div id="show_banner"> -->
+ <div id="banner"  class="list_banner">
+     <h1><%= @user.name %>'s Profile</h1>
+ </div>
 
   <div id="links">
     <div class="wrapper_skinny">
       <ul>
-        <li class="current">Lists</li>
+        <li><%= link_to "My Lists", user_path(current_user) %></li>
         <li><%= link_to "New List", new_list_path %></li>
-        <li><%= link_to "My Favorites", user_favorites_path %></li>
-        <li><%= link_to "Account Settings", edit_user_registration_path %></li>
+        <li><%= link_to "My Favorites", user_favorites_path(current_user) %></li>
+        <li><%= link_to "Account Settings", edit_user_registration_path(current_user) %></li>
       </ul>
     </div><!-- for div class="wrapper_skinny"> -->
   </div><!-- for div id="links"> -->

@@ -2,6 +2,22 @@
   <h1><%= @user.name %>'s Favorite Lists</h1>
 </div> 
 <section class= "block container">
+<div id="podcast_show" >
+ <div id="banner"  class="list_banner">
+     <h1><%= current_user.name %>'s Favorites</h1>
+ </div>
+
+  <div id="links">
+    <div class="wrapper_skinny">
+      <ul>
+        <li><%= link_to "My Lists", user_path(current_user) %></li>
+        <li><%= link_to "New List", new_list_path %></li>
+        <li class="current">My Favorites</li>
+        <li><%= link_to "Account Settings", edit_user_registration_path(current_user) %></li>
+      </ul>
+    </div><!-- for div class="wrapper_skinny"> -->
+  </div><!-- for div id="links"> -->
+
 <div class="wrapper_skinny">
   <% @lists.each do |list| %>
     <% if @user.voted_as_when_voted_for list %>
@@ -10,3 +26,6 @@
     <% end %>
   <% end %>
 </div>
+
+
+</div><!-- for <div id="podcast_show"> -->
