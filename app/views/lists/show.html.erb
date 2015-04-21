@@ -9,17 +9,15 @@
       <%#= link_to recommendation.mobile_app.name, mobile_app_recommendations_path(recommendation.mobile_app_id) %>
        
         <div class="episode_thumbnail">
-          <li></li>
-          <a href="episode.html"><% object = LinkThumbnailer.generate(recommendation.mobile_app.url) %></a>
-          <img src="<%= object.images.first.src.to_s %>", width="110" , height="110"> </img>
+          <li>
+            <a href="episode.html"><% object = LinkThumbnailer.generate(recommendation.mobile_app.url) %></a>
+            <%= recommendation.mobile_app.name %>
+          </li>
+          </br>
         </div>
-
-        <!-- <div class="episode_overview"> -->
-          <%= recommendation.mobile_app.name %>
+          <img src="<%= object.images.first.src.to_s %>", width="110" , height="110"> </img>
           <p class="description"><%= object.description %></p>
           <p class="description"><%= recommendation.comment %>
-       
-        <!-- </div>for <div class="episode_overview"> -->
         </br>
       <% end %>
     </ol>
@@ -33,16 +31,32 @@
       <% end %>
     <% else %>
       <%= link_to like_list_path(@list), :method => "put", class: "btn" do %>
+  <ul>
+    <% if user_signed_in? %>
+      <% if @user.voted_as_when_voted_for @list %>
+        <%= link_to "Unfavorite", unlike_list_path(@list), :method => "put", class: "button button_highlight button_block"%>
+<!--           <span class="glyphicon glyphicon-heart"></span>
+        <li><%#= @list.get_upvotes.size %></li> -->
+        <%# end %>
+      <% else %>
+        <%= link_to "Favorite", like_list_path(@list), :method => "put", class: "button button_highlight button_block"%>
+          <!-- <span class="glyphicon glyphicon-heart"></span>
+          <li><%#= @list.get_upvotes.size %></li> -->
+        <%# end %>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_registration_path, :method => "get", class: "button button_highlight button_block" do %>
         <span class="glyphicon glyphicon-heart"></span>
-        <%= @list.get_upvotes.size %>
+      <li><%= @list.get_upvotes.size %></li>
       <% end %>
     <% end %>
 
-    <% if user_signed_in? %>
+    <% if user_signed_in? && @list.id == current_user.id %>
       <!-- EDIT LIST NOT WORKING -->
       <%#= link_to "Edit", edit_list_path, class: "button button_highlight button_block" %>
       <%= link_to "Delete", list_path, method: :delete, data: { confirm: "Are you sure?" }, class: "button button_highlight button_block" %>
     <% end %>
 
   </div> 
+  </ul>
 </div><!-- for <div class="wrapper_skinny"> -->
