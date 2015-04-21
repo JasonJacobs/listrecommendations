@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: %i[index show]
-  resources :lists, only: %i[index new create show edit] do
+  resources :lists, only: %i[index new create show edit destroy] do
     member do
       put "like", to: "lists#upvote"
       put "unlike", to: "lists#downvote"
