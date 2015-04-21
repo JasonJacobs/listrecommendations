@@ -5,20 +5,15 @@
 <!-- <div id="podcasts" class="cf">
 	<div class="wrapper">
 		<ul class="cf"> -->
-		<section class= "block container">
-<div class="gw sm-two-up md-four-up">
-  <div class="g">
-    <ul class="cf">
-     	
-	<% @users.each do |user| %></br>
-	 <a class="thumbnail"><a href="/users/<%= user.id %>"><img src="http://api.adorable.io/avatars/110/<%= user.name %>", width="110" , height="110"> </img></a>
-	<div class="thumbnail__caption">
-		<%= link_to user.name, user_path(user) %></a></br>
-		</div>
-	<!-- for <div class="episode_thumbnail">	 -->
-  <!-- for <div class="wrapper_skinny"> -->
-	<% end %>
-</div>
-</section>
 
-</div>
+  <div class="wrapper_skinny">
+    <ul class="cf">
+      <div class="podcast_overview">		
+	<% @users.each do |user| %></br>
+	<a href="/users/<%= user.id %>"><img src="http://api.adorable.io/avatars/150/<%= user.name %>", width="150" , height="150"> </img></a>
+	<p></p>
+		<%= link_to user.name, user_path(user) %></br>
+	<% end %>
+	</div><!-- for <div class="episode_thumbnail">	 -->
+	</ul>
+</div>  <!-- for <div class="wrapper_skinny"> -->
