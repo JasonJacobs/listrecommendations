@@ -1,56 +1,32 @@
+<div id="banner" class="list_banner">
+  <h1><%= @list.title %></h1>
+</div> <!-- for div id="banner"  -->
 
-<div class="btn-group pull-right">
-  <%= link_to like_list_path(@list), :method => "put", class: "btn btn-default" do %>
-    <span class="glyphicon glyphicon-heart"></span>
-    <%= @list.get_upvotes.size %>
-  <% end %>
-  <% if user_signed_in? %>
-    <%= link_to "Edit", edit_list_path, class: "btn btn-default" %>
-    <%= link_to "Delete", list_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
-  <% end %>
-</div><!-- for <div class="btn-group pull-right">  --> 
+<div class="wrapper_skinny">
+  <ul class="cf">
+    <ol>
+      <% @list.recommendations.each do |recommendation| %>
+      <%#= link_to recommendation.mobile_app.name, mobile_app_recommendations_path(recommendation.mobile_app_id) %>
+       
+        <div class="episode_thumbnail">
+          <li></li>
+          <a href="episode.html"><% object = LinkThumbnailer.generate(recommendation.mobile_app.url) %></a>
+          <img src="<%= object.images.first.src.to_s %>", width="110" , height="110"> </img>
+        </div>
 
-<div id="episodes">
-  <div class="wrapper_skinny">
-    <ul class="cf">
-      <div class="episode_thumbnail">
-            <a href="episode.html"><% @user.lists.each do |list| %></a>
-      </div> <!-- for <div class="episode_thumbnail">  -->     
-  </div><!-- for <div class="wrapper_skinny"> -->
-</div><!-- for <div id="episodes"> -->
-  
-<div class="episode_overview">
-    <% list.recommendations.each do |recommendation| %>
-</div><!-- for <div class="episode_overview"> -->
-   
-<div class="episode_thumbnail">
-    <a href="episode.html"><% object = LinkThumbnailer.generate(recommendation.mobile_app.url) %></a>
-</div><!-- for <div class="episode_thumbnail"> -->
-
-<div class="episode_overview">
-  <p class="description"><%= object.description %></p>
-    <img src="<%= object.images.first.src.to_s %>", width="110" , height="110"> </img>
-  <% end %>
-  <% end %>
-</div><!-- for <div class="episode_overview"> -->
+        <!-- <div class="episode_overview"> -->
+          <%= recommendation.mobile_app.name %>
+          <p class="description"><%= object.description %></p>
+          <p class="description"><%= recommendation.comment %>
+       
+        <!-- </div>for <div class="episode_overview"> -->
+        </br>
+      <% end %>
+    </ol>
+  </ul> 
+</div><!-- for <div class="wrapper_skinny"> -->
 
 
 
 
 
-
-
-<%#= link_to post_downvote_path(post), :remote => true, :method => "put" %>
-<!-- <div class="actions">
- <%# if #UPVOTED BY USER %>
-  <%#= link_to unlike_list_path(@list), method: :put, class: "btn btn-default" do %>
-   <span class="glyphicon glyphicon-heart"></span>
-   <%#= @list.get_upvotes.size %>
- <%# end %>
- <%# else %>
- <%#= link_to like_list_path(@list), method: :put, class: "btn btn-default" do %>
-   <span class="glyphicon glyphicon-heart-empty"></span>
-   <%#= @list.get_downvotes.size %>
- <%# end %>
- <%# end %>
-</div> -->

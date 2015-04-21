@@ -2,12 +2,18 @@
 	<h1>Discover your new favorite apps</h1>
 </div>
 
-<div id="podcasts" class="cf">
+<!-- <div id="podcasts" class="cf">
 	<div class="wrapper">
-		<ul class="cf">
-	<% @users.each do |user| %>
-	<img src="http://api.adorable.io/avatars/110/<%= user.name %>", width="110" , height="110"> </img>
-	<%= link_to user.name, user_path(user) %>		
-	</ul>
+		<ul class="cf"> -->
+
+  <div class="wrapper_skinny">
+    <ul class="cf">
+      <div class="episode_thumbnail">		
+	<% @users.each do |user| %></br>
+	<a href="/users/<%= user.id %>"><img src="http://api.adorable.io/avatars/110/<%= user.name %>", width="110" , height="110"> </img></a>
+	<p></p>
+		<%= link_to user.name, user_path(user) %></br>
 	<% end %>
-</div>
+	</div><!-- for <div class="episode_thumbnail">	 -->
+	</ul>
+</div>  <!-- for <div class="wrapper_skinny"> -->

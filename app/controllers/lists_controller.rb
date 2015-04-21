@@ -59,7 +59,7 @@ private
   end
 
   def list_params
-    params.require(:list).permit(:title, recommendations_attributes: [ :mobile_app_id, :comment, :rating, :user_id ])
+    params.require(:list).permit(:title, :description, recommendations_attributes: [ :mobile_app_id, :comment, :rating, :user_id ])
   end
 
   def new_list(attrs={})        
