@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20150420211521) do
     t.string   "description"
     t.string   "url",           null: false
     t.string   "thumbnail_url"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "mobile_apps", ["app_store_id"], name: "index_mobile_apps_on_app_store_id"

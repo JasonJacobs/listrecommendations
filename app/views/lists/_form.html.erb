@@ -11,10 +11,13 @@
   <div id="field">
   <div class="wrapper_skinny">
     <div id="<%= 0 %>">
+    <select name="appid">
+
       <%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
-        <div class="actions">
+         <select name="appid" class="select--l">
          <%= rf.label :mobile_app_id %><br>
           <%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => "Please Select an App" %>
+          </select>
         </div><!-- for <div class="actions"> -->
 
         <div class="field">
