@@ -23,10 +23,25 @@
         </br>
       <% end %>
     </ol>
-  </ul> 
+  </ul>
+
+  <div class="btn-group pull-right">
+    <% if @user.voted_as_when_voted_for @list %>
+      <%= link_to unlike_list_path(@list), :method => "put", class: "button button_highlight button_block" do %>
+        <span class="glyphicon glyphicon-heart"></span>
+        <%= @list.get_upvotes.size %>
+      <% end %>
+    <% else %>
+      <%= link_to like_list_path(@list), :method => "put", class: "button button_highlight button_block" do %>
+        <span class="glyphicon glyphicon-heart"></span>
+        <%= @list.get_upvotes.size %>
+      <% end %>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <%= link_to "Edit", edit_list_path, class: "button button_highlight button_block" %>
+      <%= link_to "Delete", list_path, method: :delete, data: { confirm: "Are you sure?" }, class: "button button_highlight button_block" %>
+    <% end %>
+
+  </div> 
 </div><!-- for <div class="wrapper_skinny"> -->
-
-
-
-
-
