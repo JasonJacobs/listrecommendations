@@ -10,7 +10,7 @@
     <ul class="cf">
       <div class="episode_thumbnail">		
 	<% @users.each do |user| %></br>
-	<a href="/users/<%= user.id %>"><img src="http://api.adorable.io/avatars/110/<%= user.name %>", width="110" , height="110"> </img></a>
+	<a href="/users/<%= user.id %>"><img src="http://api.adorable.io/avatars/150/<%= user.name %>", width="150" , height="150"> </img></a>
 	<p></p>
 		<%= link_to user.name, user_path(user) %></br>
 	<% end %>
