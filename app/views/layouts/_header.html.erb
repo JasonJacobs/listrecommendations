@@ -1,17 +1,16 @@
-<header id="main_header" class="cf">
+<header id="main_header" class="site-header">
 	<div class="wrapper_wide">
 		<%= link_to "AppMazing", root_path, id: "logo" %>
-		<nav>
-			<ul>
+<nav class="site-nav">
 				<% unless user_signed_in? %>
-					<li><%= link_to "Explore", users_path %></li>
-					<li><%= link_to 'Login', new_user_session_path %></li>
-					<li><%= link_to "Create lists", new_list_path %></li>
+					<a><%= link_to "Explore", users_path %></a>
+					<a><%= link_to 'Login', new_user_session_path %></a>
+					<a><%= link_to "Create lists", new_list_path %></a>
 				<% else %>
-					<li><%= link_to "Profile", user_path(current_user.id) %></li>
-					<li><%= link_to "Explore", users_path %></li>
-					<li><%= link_to "Create lists", new_list_path %></li>
-					<li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+					<a><%= link_to "Profile", user_path(current_user.id) %></a>
+					<a><%= link_to "Explore", users_path %></a>
+					<a><%= link_to "Create lists", new_list_path %></a>
+					<a><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></a>
 				<% end %>
 			</ul>
 		</nav>

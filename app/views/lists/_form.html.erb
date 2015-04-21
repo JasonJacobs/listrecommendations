@@ -14,9 +14,9 @@
     <select name="appid">
 
       <%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
-         <select name="appid" class="select--l">
           <%= rf.label :mobile_app_id %><br>
-          <%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => "Please Select an App" %>
+                   <select name="appid" class="select--l">
+<%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => "Please Select an App" %>
           </select>
         </div><!-- for <div class="actions"> -->
 
@@ -46,7 +46,7 @@
 	</div> 	<!-- for <div class="wrapper_skinny" > -->
 
   <div class="btn-group"> 
-    <button type="button", class:"buttonform" id="add_recommendation_form">+</button>
+    <p><a class="btn--inline"><button type="button", class:"btn--inline" id="add_recommendation_form">+</button></a>
   </div> <!-- for <div class="btn-group">  -->
 
   <%= f.submit class: "button button_highlight button_block"%>

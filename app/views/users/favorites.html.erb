@@ -1,7 +1,7 @@
 <div id="banner" class="list_banner">
   <h1><%= @user.name %>'s Favorite Lists</h1>
 </div> 
-
+<section class= "block container">
 <div class="wrapper_skinny">
   <% @lists.each do |list| %>
     <% if @user.voted_as_when_voted_for list %>
