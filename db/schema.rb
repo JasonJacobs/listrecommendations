@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 20150420211521) do
   add_index "lists", ["user_id"], name: "index_lists_on_user_id"
 
   create_table "mobile_apps", force: :cascade do |t|
-    t.integer  "app_store_id"
+    t.integer  "app_store_id",  null: false
     t.string   "name"
     t.string   "description"
-    t.string   "url"
+    t.string   "url",           null: false
     t.string   "thumbnail_url"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
