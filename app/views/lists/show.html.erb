@@ -27,15 +27,22 @@
 
   <div class="btn-group pull-right">
   <ul>
-    <% if @user.voted_as_when_voted_for @list %>
-      <%= link_to unlike_list_path(@list), :method => "put", class: "button button_highlight button_block" do %>
-        <span class="glyphicon glyphicon-heart"></span>
-      <li><%= @list.get_upvotes.size %></li>
+    <% if user_signed_in? %>
+      <% if @user.voted_as_when_voted_for @list %>
+        <%= link_to unlike_list_path(@list), :method => "put", class: "button button_highlight button_block" do %>
+          <span class="glyphicon glyphicon-heart"></span>
+        <li><%= @list.get_upvotes.size %></li>
+        <% end %>
+      <% else %>
+        <%= link_to like_list_path(@list), :method => "put", class: "button button_highlight button_block" do %>
+          <span class="glyphicon glyphicon-heart"></span>
+          <li><%= @list.get_upvotes.size %></li>
+        <% end %>
       <% end %>
     <% else %>
-      <%= link_to like_list_path(@list), :method => "put", class: "button button_highlight button_block" do %>
+      <%= link_to new_user_registration_path, :method => "get", class: "button button_highlight button_block" do %>
         <span class="glyphicon glyphicon-heart"></span>
-        <li><%= @list.get_upvotes.size %></li>
+      <li><%= @list.get_upvotes.size %></li>
       <% end %>
     <% end %>
 
