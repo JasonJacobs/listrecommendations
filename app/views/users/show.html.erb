@@ -3,6 +3,8 @@
      <h1><%= @user.name %>'s Profile</h1>
  </div>
 
+<% if user_signed_in? %>
+
   <div id="links">
     <div class="wrapper_skinny">
       <ul>
@@ -13,6 +15,7 @@
       </ul>
     </div><!-- for div class="wrapper_skinny"> -->
   </div><!-- for div id="links"> -->
+  <% end  %>
 
   <div id="episodes">
     <div class="wrapper_skinny">
