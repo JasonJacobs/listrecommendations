@@ -9,14 +9,12 @@
       <%#= link_to recommendation.mobile_app.name, mobile_app_recommendations_path(recommendation.mobile_app_id) %>
        
         <div class="episode_thumbnail">
-          <li>
             <a href="episode.html"><% object = LinkThumbnailer.generate(recommendation.mobile_app.url) %></a>
-            <%= recommendation.mobile_app.name %>
-          </li>
+          
           </br>
         </div>
-          <img src="<%= object.images.first.src.to_s %>", width="110" , height="110"> </img>
-          <p class="description"><%= object.description %></p>
+          <h1><img class="img--center" src="<%= object.images.first.src.to_s %>", width="75", height="75"> </img><%= recommendation.mobile_app.name %>
+<p><%= object.description %></p></h1>
           <p class="description"><%= recommendation.comment %>
         </br>
       <% end %>
