@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def favorites
     user
+    lists
   end
 
 private
@@ -22,6 +23,8 @@ private
     @user ||= User.find(params[:id])
   end
 
-
+  def lists
+    @lists ||= List.all
+  end
 
 end

@@ -76,7 +76,6 @@ body {
  
 
 .button_block {
-	display: block;
 	margin: 0 auto;
 	display: block;
 	width: 1px;
@@ -210,11 +209,12 @@ textarea {
   &:focus {
     outline: none;
   }
- }		 
+}
 
 
 #form {
 	padding: 0 0 5rem 0;
+
 }
 
 select {
@@ -227,6 +227,17 @@ select {
     font-size: 1.5rem;
   }
 
+}
+
+select {
+  width: 100%;
+  font-size: 1rem;
+  &.select--sm {
+    font-size: .5rem;
+  }
+  &.select--lg {
+    font-size: 1.5rem;
+  }
  }		 
 
 
