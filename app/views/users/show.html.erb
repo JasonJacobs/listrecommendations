@@ -1,8 +1,7 @@
-<div id="podcast_show" >
-  <div id="show_banner">
-    <div class="wrapper_skinny">
+  <div id="podcast_show">
+  <div id="banner" class="dash_banner">
+
         <h1><%= @user.name %>'s Profile</h1>
-    </div> <!-- for <div class="wrapper_skinny"> -->
   </div><!-- for <div id="show_banner"> -->
 
   <div id="links">
@@ -12,16 +11,16 @@
         <li><%= link_to "New List", new_list_path %></li>
         <li><%= link_to "My Favorites", user_favorites_path %></li>
         <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-      </ul>
-    </div><!-- for div class="wrapper_skinny"> -->
-  </div><!-- for div id="links"> -->
+   </ul>
+    </div>
+  </div>
 
   <div id="episodes">
     <div class="wrapper_skinny">
       <div class="episode_thumbnail">
         <% @user.lists.each do |list| %>
         <%= link_to list.title, list_path(list) %>
-        <%= list.description %></br>
+        <p class="description"><%= list.description %></p></br>
         <% end %>
       </div>  <!-- for <div class="episode_thumbnail"> -->
     </div> <!-- for <div class="wrapper_skinny"> -->

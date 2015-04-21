@@ -1,23 +1,19 @@
 <%= form_for list do |f| %>
   
   <div class="field">
-    <%= f.label :title %>
+    <%= f.label :title %><br>
     <%= f.text_field :title %>
-    <p></p>
-    <%= f.label :description %>
+    <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div><!-- for<div class="field"> -->
 
   <div id="field">
   <div class="wrapper_skinny">
     <div id="<%= 0 %>">
-    <select name="appid">
-
       <%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
-          <%= rf.label :mobile_app_id %><br>
-                   <select name="appid" class="select--l">
-<%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => "Please Select an App" %>
-          </select>
+        <div class="actions">
+         <%= rf.label :mobile_app_id %><br>
+          <%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => "Please Select an App" %>
         </div><!-- for <div class="actions"> -->
 
         <div class="field">
@@ -28,8 +24,8 @@
       <% end %>
     </div><!-- for <div id="<%#= 0 %>"> -->
     <% 9.times do |n| %>
-  	 <div class="show_rec_form" id="<%= n %>" style='display:none;'>
-			<%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
+     <div class="show_rec_form" id="<%= n %>" style='display:none;'>
+      <%= f.fields_for :recommendations, list.recommendations.new do |rf| %>
         <div class="actions">
          <%= rf.label :mobile_app_id %><br>
           <%= rf.collection_select :mobile_app_id, MobileApp.order(:name), :id, :name, :include_blank => "Please Select an App" %>
@@ -37,16 +33,16 @@
 
         <div class="field">
           <%= rf.label :comment %>
-				  <%= rf.text_field :comment %>
+          <%= rf.text_field :comment %>
           <%= rf.hidden_field :user_id, value: current_user.id %>
         </div><!-- for <div class="field"> -->
-			<% end %>
-		  </div><!-- for div class="show_rec_form" -->
+      <% end %>
+      </div><!-- for div class="show_rec_form" -->
     <% end %>
-	</div> 	<!-- for <div class="wrapper_skinny" > -->
+  </div>  <!-- for <div class="wrapper_skinny" > -->
 
   <div class="btn-group"> 
-    <p><a class="btn--inline"><button type="button", class:"btn--inline" id="add_recommendation_form">+</button></a>
+    <button type="button", class:"button button_highlight button_block" id="add_recommendation_form">+</button>
   </div> <!-- for <div class="btn-group">  -->
 
   <%= f.submit class: "button button_highlight button_block"%>
